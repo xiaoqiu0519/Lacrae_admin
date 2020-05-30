@@ -6,6 +6,17 @@
         添加
       </div>
     </div>
+    <div class="updatetip">
+        <div class="tiptitle">
+          友情提示：
+        </div>
+        <div class="tiplist">
+          <p>1：每组图片从左至右依次是 案例列表图、H5案例详情图、PC案例详情图 </p>
+          <p>2：建议产品列表图上传尺寸比例为 <span style="color:#409eff"> 494*759 左右的透明</span> 图片，图片大小控制在<span style="color:#409eff"> 50k </span>以内</p>
+          <p>3：建议H5案例详情图上传尺寸比例为 <span style="color:#409eff"> 751*1329 左右的透明</span> 图片，图片大小控制在<span style="color:#409eff"> 50k </span>以内</p>
+          <p>4：建PC案例详情图上传尺寸比例为 <span style="color:#409eff"> 1921*1081 左右的透明</span> 图片，图片大小控制在<span style="color:#409eff"> 100k </span>以内</p>
+        </div>
+    </div>
     <div class="conlist navlist" >
       <div class="number">序号</div>
       <div class="content">中</div>
@@ -14,7 +25,7 @@
       <div class="sort">排序</div>
       <div class="edit">操作</div>
     </div>
-    <div class="conlist" style="border-top:none">
+    <div class="conlist" style="border-top:none;">
         <div class="number">
           <div v-for="(item,key) in imgarr[1]" :key="key">{{key+1}}</div>
         </div>
@@ -109,6 +120,7 @@
           </div>
         </div>
     </div>
+    <div style='width:100%;height:80px'></div>
   </div>
  
   
@@ -211,6 +223,7 @@ export default {
         }else{
           _this.loading = true;
           _this.$post("/product/add", _this.formData1).then((res) => {
+            _this.loading = false;
              if(res.error == '0000'){
                _this.$message({
                 message: '添加产品成功',
@@ -364,6 +377,13 @@ input[type='file']{
   font-weight: 900;
   position: relative;
 }
+.updatetip{
+  width: 98%;
+  margin: 0 auto;
+}
+.tiplist{
+  line-height: 30px;
+}
 .Add{
   width: 60px;
   height: 30px;
@@ -395,10 +415,6 @@ input[type='file']{
   justify-content: space-between;
   
 }
-.conlist >div{
-  height: 220px;
-  line-height: 220px;
-}
 .listtype{
   display: flex;
   
@@ -408,6 +424,8 @@ input[type='file']{
   text-align: center;
 }
 .number>div{
+  height: 220px;
+  line-height: 220px;
   border: 1px solid #ffffff;
   border-top: none;
 }
@@ -419,7 +437,8 @@ input[type='file']{
 }
 .imglist{
   width: 100%;
-  height: 100%;
+  height: 220px;
+  line-height: 220px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -450,7 +469,8 @@ input[type='file']{
   border: 1px solid #ffffff;
   border-top: none;
   width: 100%;
-  height: 100%;
+  height: 220px;
+  line-height: 220px;
 }
 .sort input{
   width: 50px;
@@ -465,6 +485,8 @@ input[type='file']{
   border: 1px solid #ffffff;
   border-top: none;
   border-left: none;
+  height: 220px;
+  line-height: 220px;
 }
 .edit span{
   display: inline-block;
